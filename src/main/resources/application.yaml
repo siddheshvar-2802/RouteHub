@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: RouteHub
+
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:postgresql://duploirocdev.crgbxos5etc9.ap-south-1.rds.amazonaws.com:5432/IN_JFL_DPI_ODS_DEV
+    username: IN_JFL_DPI_ODS_REPORT_USER_DEV
+    password: 0.Oty7(G6>fA
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        default_schema: jfl_rms_final_dev1.1
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.hibernate.SQL: WARN
+    org.hibernate.type.descriptor.sql: WARN
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: when_authorized
+
+  logging:
+    level:
+      root: INFO
+      com.routehub: DEBUG
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss} %-5level [%thread] %logger{36} - %msg%n"
+
